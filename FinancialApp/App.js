@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TransactionsScreen from './src/screens/TransactionsScreen';
 import SummaryScreen from './src/screens/SummaryScreen';
 import TransactionDetail from './src/screens/TransactionDetail';
+import { Provider } from 'react-redux';
+import store from './src/reducers/store';
 
 export default function App() {
   const Tab = createBottomTabNavigator();
@@ -20,17 +22,16 @@ export default function App() {
   )
 
   return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Transactions" component={StackScreen} options={{ headerShown: false }} />
 
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Transactions" component={StackScreen} options={{
-          headerShown: false
-        }}/>
+          <Tab.Screen name="Summary" component={SummaryScreen} />
 
-        <Tab.Screen name="Summary" component={SummaryScreen} />
-
-      </Tab.Navigator>
-    </NavigationContainer>
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

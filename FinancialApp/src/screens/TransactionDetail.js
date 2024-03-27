@@ -2,7 +2,7 @@ import { View, Text } from "react-native"
 
 
 const TransactionDetail = ({route})=>{
-    const { name, price, location } = route.params
+    const { name, price, location, date } = route.params.transaction
     return(
         <View >
             <Text>Transaction Detail</Text>
@@ -12,10 +12,12 @@ const TransactionDetail = ({route})=>{
                 <Text>{price}</Text>
                 <Text>{location}</Text>
 
-                <Text>Date</Text>
+                <Text>{date}</Text>
             </View>
         </View>
     )
 }
 
 export default TransactionDetail
+
+
