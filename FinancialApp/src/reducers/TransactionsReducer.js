@@ -36,7 +36,6 @@ export const HighSpending = createSelector(
     }
 );
 
-// Reselect Selector
 export const LowSpending = createSelector(
     selectTransaction, transactions => {
         if (transactions.length === 0) {
@@ -52,35 +51,5 @@ export const LowSpending = createSelector(
         });
     }
 );
-
-
-
-
-
-
-
-
-
-
-
-// export const HighSpending = createSelector(
-// 	state => state.transaction,
-// 	transactions => {
-// 		if (transactions.length === 0) return null;
-// 		return transactions.reduce((max, current) => {
-// 			return parseFloat(current.price) > parseFloat(max.price) ? current : max;
-// 		});
-// 	}
-// );
-
-// export const LowSpending = createSelector(
-// 	state => state.transaction,
-// 	transactions => {
-// 		if (transactions.length === 0) return null;
-// 		return transactions.reduce((min, current) => {
-// 			return parseFloat(current.price) < parseFloat(min.price) ? current : min;
-// 		});
-// 	}
-// );
 
 export default transactionsReducer.reducer;
