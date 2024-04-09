@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore/lite';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,5 +18,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const transactionCollection = collection(db, transactions)
-export const transactionsList= () => getDocs(transactionCollection)
+const transactionCollection = collection(db, "transactions")
+// export const transactionsList= () => getDocs(transactionCollection)
+
+export const databaseHelper = {
+    transactionsList() {
+        return getDocs(transactionCollection)
+    },
+    addTransaction(transaction){
+        return addDoc(transactionCollection, transaction)
+    }
+}
+
+export { app , db }

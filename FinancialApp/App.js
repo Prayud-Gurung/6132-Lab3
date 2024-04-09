@@ -7,6 +7,7 @@ import SummaryScreen from './src/screens/SummaryScreen';
 import TransactionDetail from './src/screens/TransactionDetail';
 import { Provider } from 'react-redux';
 import store from './src/reducers/store';
+import AddTransactionScreen from './src/screens/AddTransactionScreen';
 
 export default function App() {
   const Tab = createBottomTabNavigator();
@@ -15,6 +16,7 @@ export default function App() {
   const StackScreen = () => (
     <Stack.Navigator>
       <Stack.Screen name="Transaction" component={TransactionsScreen} options={{ title: "Transactions" }} />
+      <Stack.Screen name="AddTransaction" component={AddTransactionScreen} options={{ title: "AddTransaction" }} />
 
       <Stack.Screen name="TransactionDetail" component={TransactionDetail} options={{ title: "Transaction Detail" }} />
 

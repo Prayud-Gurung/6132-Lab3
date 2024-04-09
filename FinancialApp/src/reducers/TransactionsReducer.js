@@ -1,13 +1,16 @@
-import transactions from '../../assets/transactions';
 import { createSlice } from '@reduxjs/toolkit'
 import { createSelector } from 'reselect';
-
 export const transactionsReducer = createSlice({
     name: 'transaction',
-    initialState: transactions,
+    initialState: [],
     reducers: {
-
-    },
+        fetchDataSuccess: (state, action) => {
+            return action.payload
+        },
+        addTransaction: (state, action) => {
+			state.push(action.payload)
+		}
+    }
 })
 
 export const selectTransaction = state => state.transaction;
@@ -52,4 +55,6 @@ export const LowSpending = createSelector(
     }
 );
 
-export default transactionsReducer.reducer;
+export const { fetchDataSuccess, addTransaction } = transactionsReducer.actions;
+
+export default transactionsReducer.reducer
